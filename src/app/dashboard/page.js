@@ -137,7 +137,12 @@ export default function DashboardPage() {
       <nav className="glass border-b border-zinc-800/50 sticky top-0 z-40">
         <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
           <Link href="/" className="text-lg font-black tracking-tight flex items-center gap-2">
-            <span>💪</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-emerald-400">
+              <path d="M6.5 6.5 17.5 17.5" />
+              <line x1="20" y1="12" x2="4" y2="12" />
+              <path d="M17.5 17.5 20 15 20 9 17.5 6.5" />
+              <path d="M6.5 6.5 4 9 4 15 6.5 17.5" />
+            </svg>
             <span className="gradient-text">FitFocus</span>
           </Link>
           <span className="text-[10px] text-zinc-600 font-medium uppercase tracking-widest">Panel de Control</span>

@@ -87,7 +87,12 @@ export default function LoginPage() {
               <AnimateOnScroll variants={fadeUp} delay={0.2}>
                 <div className="text-center mb-8">
                   <h2 className="text-2xl font-black text-white tracking-tight flex items-center justify-center gap-2">
-                    <span className="text-2xl">💪</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 text-emerald-400">
+                      <path d="M6.5 6.5 17.5 17.5" />
+                      <line x1="20" y1="12" x2="4" y2="12" />
+                      <path d="M17.5 17.5 20 15 20 9 17.5 6.5" />
+                      <path d="M6.5 6.5 4 9 4 15 6.5 17.5" />
+                    </svg>
                     <span className="gradient-text">FitFocus</span>
                   </h2>
                   <p className="text-zinc-500 mt-1.5 text-xs tracking-wide">
