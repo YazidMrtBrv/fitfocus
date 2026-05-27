@@ -14,8 +14,8 @@ body {
 }
 
 ::selection {
-  background: rgba(250, 204, 21, 0.3);
-  color: #facc15;
+  background: rgba(16, 185, 129, 0.3);
+  color: #10b981;
 }
 
 .glass {
@@ -29,73 +29,73 @@ body {
   background: rgba(24, 24, 27, 0.5);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(250, 204, 21, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.08);
   transition: all 0.3s ease;
 }
 
 .glass-card:hover {
-  border-color: rgba(250, 204, 21, 0.2);
+  border-color: rgba(16, 185, 129, 0.2);
 }
 
-.btn-gold {
-  background: linear-gradient(135deg, #facc15, #eab308);
+.btn-emerald {
+  background: linear-gradient(135deg, #10b981, #059669);
   color: #000000;
   font-weight: 800;
   border-radius: 0.75rem;
   transition: all 0.3s ease;
 }
 
-.btn-gold:hover {
-  background: linear-gradient(135deg, #fde047, #facc15);
-  box-shadow: 0 0 30px rgba(250, 204, 21, 0.25);
+.btn-emerald:hover {
+  background: linear-gradient(135deg, #34d399, #10b981);
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.25);
   transform: scale(1.02);
 }
 
-.btn-gold:active {
+.btn-emerald:active {
   transform: scale(0.98);
 }
 
-.btn-outline-gold {
+.btn-outline-emerald {
   background: transparent;
-  color: #facc15;
-  border: 1px solid rgba(250, 204, 21, 0.3);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
   font-weight: 600;
   border-radius: 0.75rem;
   transition: all 0.3s ease;
 }
 
-.btn-outline-gold:hover {
-  background: rgba(250, 204, 21, 0.1);
-  border-color: #facc15;
-  box-shadow: 0 0 20px rgba(250, 204, 21, 0.1);
+.btn-outline-emerald:hover {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: #10b981;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.1);
 }
 
-.glow-gold {
+.glow-emerald {
   position: relative;
 }
 
-.glow-gold::before {
+.glow-emerald::before {
   content: '';
   position: absolute;
   inset: -20px;
   border-radius: inherit;
-  background: radial-gradient(120px circle at 50% 50%, rgba(250, 204, 21, 0.12), transparent 70%);
+  background: radial-gradient(120px circle at 50% 50%, rgba(16, 185, 129, 0.12), transparent 70%);
   filter: blur(30px);
   transform: translateZ(0);
   pointer-events: none;
   z-index: -1;
 }
 
-.glow-gold-sm {
+.glow-emerald-sm {
   position: relative;
 }
 
-.glow-gold-sm::before {
+.glow-emerald-sm::before {
   content: '';
   position: absolute;
   inset: -12px;
   border-radius: inherit;
-  background: radial-gradient(80px circle at 50% 50%, rgba(250, 204, 21, 0.08), transparent 70%);
+  background: radial-gradient(80px circle at 50% 50%, rgba(16, 185, 129, 0.08), transparent 70%);
   filter: blur(20px);
   transform: translateZ(0);
   pointer-events: none;
@@ -103,7 +103,7 @@ body {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #facc15, #eab308, #fde047);
+  background: linear-gradient(135deg, #10b981, #059669, #34d399);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -119,7 +119,7 @@ body {
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(135deg, rgba(250, 204, 21, 0.3), transparent, rgba(250, 204, 21, 0.1));
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.3), transparent, rgba(16, 185, 129, 0.1));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;

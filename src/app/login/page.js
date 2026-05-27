@@ -51,8 +51,8 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen bg-black flex flex-col justify-center items-center font-sans px-4 relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-1/3 -left-1/3 w-[500px] h-[500px] bg-yellow-500/5 rounded-full blur-[70px] animate-pulse-glow" />
-        <div className="absolute -bottom-1/3 -right-1/3 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[70px] animate-pulse-glow" style={{ animationDelay: "1.5s" }} />
+        <div className="absolute -top-1/3 -left-1/3 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-[70px] animate-pulse-glow" />
+        <div className="absolute -bottom-1/3 -right-1/3 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-[70px] animate-pulse-glow" style={{ animationDelay: "1.5s" }} />
       </div>
 
       <AnimatePresence>
@@ -66,13 +66,13 @@ export default function LoginPage() {
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
-              className="w-10 h-10 border-2 border-zinc-800 border-t-yellow-400 rounded-full"
+              className="w-10 h-10 border-2 border-zinc-800 border-t-emerald-400 rounded-full"
             />
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="text-yellow-400 font-medium tracking-widest text-[10px] uppercase mt-4 opacity-80"
+              className="text-emerald-400 font-medium tracking-widest text-[10px] uppercase mt-4 opacity-80"
             >
               Autenticando...
             </motion.p>
@@ -81,7 +81,7 @@ export default function LoginPage() {
       </AnimatePresence>
 
       <AnimateOnScroll variants={fadeUp}>
-        <div className="glass rounded-2xl p-8 w-full max-w-md glow-gold relative">
+        <div className="glass rounded-2xl p-8 w-full max-w-md glow-emerald relative">
           <div className="gradient-border rounded-2xl" style={{ padding: "1px" }}>
             <div className="bg-black/80 backdrop-blur-xl rounded-2xl p-8">
               <AnimateOnScroll variants={fadeUp} delay={0.2}>
@@ -110,7 +110,7 @@ export default function LoginPage() {
                       className={`w-full bg-black/60 border rounded-xl p-3 text-white placeholder-zinc-800 text-sm transition-all duration-300 outline-none ${
                         errorUsuario
                           ? "border-rose-500/50 shadow-md shadow-rose-500/5 focus:border-rose-500"
-                          : "border-zinc-800 focus:border-yellow-400"
+                          : "border-zinc-800 focus:border-emerald-400"
                       }`}
                     />
                   </div>
@@ -129,7 +129,7 @@ export default function LoginPage() {
                       className={`w-full bg-black/60 border rounded-xl p-3 text-white placeholder-zinc-800 text-sm transition-all duration-300 outline-none ${
                         errorPassword
                           ? "border-rose-500/50 shadow-md shadow-rose-500/5 focus:border-rose-500"
-                          : "border-zinc-800 focus:border-yellow-400"
+                          : "border-zinc-800 focus:border-emerald-400"
                       }`}
                     />
                   </div>
@@ -151,7 +151,7 @@ export default function LoginPage() {
                 <AnimateOnScroll variants={fadeUp} delay={0.4}>
                   <button
                     type="submit"
-                    className="w-full btn-gold rounded-xl p-3 text-sm mt-2"
+                    className="w-full btn-emerald rounded-xl p-3 text-sm mt-2"
                   >
                     Entrar al Panel
                   </button>

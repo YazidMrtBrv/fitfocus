@@ -31,7 +31,7 @@ const features = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-black text-white font-sans selection:bg-yellow-400/30 selection:text-yellow-400 overflow-x-hidden">
+    <div className="min-h-screen bg-black text-white font-sans selection:bg-emerald-400/30 selection:text-emerald-400 overflow-x-hidden">
       <nav className="glass border-b border-zinc-800/50 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <motion.div
@@ -48,7 +48,7 @@ export default function Home() {
           >
             <Link
               href="/login"
-              className="btn-outline-gold text-xs px-4 py-2 rounded-xl"
+              className="btn-outline-emerald text-xs px-4 py-2 rounded-xl"
             >
               ¿Ya eres parte de nuestro equipo?, click aqui
             </Link>
@@ -58,8 +58,8 @@ export default function Home() {
 
       <main className="max-w-5xl mx-auto px-6 pt-28 pb-16 text-center flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] relative">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-1/4 -left-1/4 w-[600px] h-[600px] bg-yellow-500/5 rounded-full blur-[80px] animate-pulse-glow" />
-          <div className="absolute -bottom-1/4 -right-1/4 w-[600px] h-[600px] bg-amber-500/5 rounded-full blur-[80px] animate-pulse-glow" style={{ animationDelay: "1s" }} />
+          <div className="absolute -top-1/4 -left-1/4 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-[80px] animate-pulse-glow" />
+          <div className="absolute -bottom-1/4 -right-1/4 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-[80px] animate-pulse-glow" style={{ animationDelay: "1s" }} />
         </div>
 
         <motion.div
@@ -69,7 +69,7 @@ export default function Home() {
         >
           <motion.span
             variants={heroItem}
-            className="bg-yellow-400/10 text-yellow-400 border border-yellow-400/20 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6 inline-block"
+            className="bg-emerald-400/10 text-emerald-400 border border-emerald-400/20 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6 inline-block"
           >
             Para Entrenadores Independientes
           </motion.span>
@@ -94,12 +94,12 @@ export default function Home() {
             variants={heroItem}
             className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center"
           >
-            <Link href="/login" className="btn-gold px-8 py-4 text-base text-center">
+            <Link href="/login" className="btn-emerald px-8 py-4 text-base text-center">
               Comenzar Gratis
             </Link>
             <a
               href="#features"
-              className="btn-outline-gold px-8 py-4 text-base text-center"
+              className="btn-outline-emerald px-8 py-4 text-base text-center"
             >
               Saber más
             </a>
@@ -116,7 +116,7 @@ export default function Home() {
             </h2>
           </AnimateOnScroll>
           <AnimateOnScroll variants={sectionLine}>
-            <div className="h-0.5 w-16 bg-yellow-400/50 mx-auto mt-3 mb-16" />
+            <div className="h-0.5 w-16 bg-emerald-400/50 mx-auto mt-3 mb-16" />
           </AnimateOnScroll>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -127,15 +127,15 @@ export default function Home() {
                 delay={i * 0.15}
               >
                 <article className="glass-card rounded-2xl p-6 flex flex-col items-start text-left gap-4 group h-full">
-              <div className="w-14 h-14 rounded-xl overflow-hidden flex-shrink-0" style={{ filter: "drop-shadow(0 0 12px rgba(250,204,21,0.15))", transform: "translateZ(0)" }}>
-                <img
-                  src={f.img}
-                  alt={f.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
+                  <div className="w-14 h-14 rounded-xl overflow-hidden flex-shrink-0" style={{ filter: "drop-shadow(0 0 12px rgba(16,185,129,0.15))", transform: "translateZ(0)" }}>
+                    <img
+                      src={f.img}
+                      alt={f.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                   <div>
-                    <h3 className="text-lg font-bold mb-2 text-white group-hover:text-yellow-400 transition-colors">
+                    <h3 className="text-lg font-bold mb-2 text-white group-hover:text-emerald-400 transition-colors">
                       {f.title}
                     </h3>
                     <p className="text-zinc-500 text-sm leading-relaxed">{f.desc}</p>

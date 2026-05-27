@@ -153,7 +153,7 @@ export default function DashboardPage() {
               </h1>
             </AnimateOnScroll>
             <AnimateOnScroll variants={sectionLine}>
-              <div className="h-0.5 w-16 bg-yellow-400/50 mt-1.5" />
+              <div className="h-0.5 w-16 bg-emerald-400/50 mt-1.5" />
             </AnimateOnScroll>
             <p className="text-zinc-500 text-xs mt-3">
               Gestión de entrenamientos y membresías.
@@ -162,7 +162,7 @@ export default function DashboardPage() {
           <AnimateOnScroll variants={fadeUp}>
             <button
               onClick={() => setModalAbierto(true)}
-              className="btn-gold text-xs px-4 py-2 rounded-lg"
+              className="btn-emerald text-xs px-4 py-2 rounded-lg"
             >
               + Añadir Alumno
             </button>
@@ -176,7 +176,7 @@ export default function DashboardPage() {
           className="grid grid-cols-3 gap-4 mb-8"
         >
           {[
-            { label: "Activos", value: totalAlumnos, color: "text-yellow-400" },
+            { label: "Activos", value: totalAlumnos, color: "text-emerald-400" },
             { label: "Pagados", value: pagados, color: "text-emerald-400" },
             { label: "Pendientes", value: pendientes, color: "text-rose-400" },
           ].map((s) => (
@@ -194,7 +194,7 @@ export default function DashboardPage() {
         </motion.div>
 
         <AnimateOnScroll variants={fadeUp}>
-          <div className="glass-card rounded-xl overflow-hidden glow-gold-sm">
+          <div className="glass-card rounded-xl overflow-hidden glow-emerald-sm">
             <div className="overflow-x-auto scrollbar-hide">
               <table className="w-full text-left border-collapse">
                 <thead>
@@ -223,7 +223,7 @@ export default function DashboardPage() {
                         <td className="p-3.5">
                           <button
                             onClick={() => abrirCalendario(alumno)}
-                            className="text-left text-zinc-400 hover:text-yellow-400 font-medium hover:underline cursor-pointer transition-colors"
+                            className="text-left text-zinc-400 hover:text-emerald-400 font-medium hover:underline cursor-pointer transition-colors"
                           >
                             {alumno.rutina}
                           </button>
@@ -285,7 +285,7 @@ export default function DashboardPage() {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="glass rounded-2xl p-6 w-full max-w-sm glow-gold-sm"
+              className="glass rounded-2xl p-6 w-full max-w-sm glow-emerald-sm"
             >
               <h3 className="text-sm font-bold text-white mb-4 uppercase tracking-wider">
                 Nuevo Registro
@@ -300,7 +300,7 @@ export default function DashboardPage() {
                     placeholder="ej: Juan Pérez"
                     value={nuevoNombre}
                     onChange={(e) => setNuevoNombre(e.target.value)}
-                    className="w-full bg-black/60 border border-zinc-800 focus:border-yellow-400 rounded-lg p-2.5 text-white outline-none text-sm placeholder-zinc-700 transition-colors"
+                    className="w-full bg-black/60 border border-zinc-800 focus:border-emerald-400 rounded-lg p-2.5 text-white outline-none text-sm placeholder-zinc-700 transition-colors"
                     required
                   />
                 </div>
@@ -313,7 +313,7 @@ export default function DashboardPage() {
                     placeholder="ej: Hipertrofia Pierna"
                     value={nuevaRutina}
                     onChange={(e) => setNuevaRutina(e.target.value)}
-                    className="w-full bg-black/60 border border-zinc-800 focus:border-yellow-400 rounded-lg p-2.5 text-white outline-none text-sm placeholder-zinc-700 transition-colors"
+                    className="w-full bg-black/60 border border-zinc-800 focus:border-emerald-400 rounded-lg p-2.5 text-white outline-none text-sm placeholder-zinc-700 transition-colors"
                     required
                   />
                 </div>
@@ -324,7 +324,7 @@ export default function DashboardPage() {
                   <select
                     value={nuevoEstado}
                     onChange={(e) => setNuevoEstado(e.target.value)}
-                    className="w-full bg-black/60 border border-zinc-800 focus:border-yellow-400 rounded-lg p-2.5 text-white outline-none text-sm cursor-pointer transition-colors"
+                    className="w-full bg-black/60 border border-zinc-800 focus:border-emerald-400 rounded-lg p-2.5 text-white outline-none text-sm cursor-pointer transition-colors"
                   >
                     <option value="Pagado">Pagado</option>
                     <option value="Pendiente">Pendiente</option>
@@ -340,7 +340,7 @@ export default function DashboardPage() {
                   </button>
                   <button
                     type="submit"
-                    className="flex-1 btn-gold rounded-lg py-2 text-xs"
+                    className="flex-1 btn-emerald rounded-lg py-2 text-xs"
                   >
                     Guardar
                   </button>
@@ -363,7 +363,7 @@ export default function DashboardPage() {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="glass rounded-2xl p-6 w-full max-w-xl glow-gold-sm flex flex-col gap-5"
+              className="glass rounded-2xl p-6 w-full max-w-xl glow-emerald-sm flex flex-col gap-5"
             >
               <div className="flex justify-between items-center">
                 <div>
@@ -393,12 +393,12 @@ export default function DashboardPage() {
                       onClick={() => setDiaSeleccionado(d.id)}
                       className={`flex flex-col items-center justify-between py-2 px-1 rounded-lg border transition-all min-h-[70px] ${
                         esActivo
-                          ? "bg-zinc-800 border-yellow-400 text-yellow-400"
+                          ? "bg-zinc-800 border-emerald-400 text-emerald-400"
                           : "bg-transparent border-transparent text-zinc-500 hover:border-zinc-700"
                       }`}
                     >
                       <span className="text-[9px] font-bold opacity-60">{d.nombre}</span>
-                      <span className={`text-sm font-black my-0.5 ${esActivo ? "text-yellow-400" : "text-white"}`}>
+                      <span className={`text-sm font-black my-0.5 ${esActivo ? "text-emerald-400" : "text-white"}`}>
                         {String(new Date().getDate()).padStart(2, "0")}
                       </span>
                       <span className="text-[9px] truncate w-full px-0.5 text-center font-medium">
