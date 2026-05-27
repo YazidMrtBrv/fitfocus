@@ -35,7 +35,6 @@ body {
 
 .glass-card:hover {
   border-color: rgba(250, 204, 21, 0.2);
-  box-shadow: 0 0 30px rgba(250, 204, 21, 0.05);
 }
 
 .btn-gold {
@@ -72,11 +71,35 @@ body {
 }
 
 .glow-gold {
-  box-shadow: 0 0 30px rgba(250, 204, 21, 0.1), 0 0 60px rgba(250, 204, 21, 0.05);
+  position: relative;
+}
+
+.glow-gold::before {
+  content: '';
+  position: absolute;
+  inset: -20px;
+  border-radius: inherit;
+  background: radial-gradient(120px circle at 50% 50%, rgba(250, 204, 21, 0.12), transparent 70%);
+  filter: blur(30px);
+  transform: translateZ(0);
+  pointer-events: none;
+  z-index: -1;
 }
 
 .glow-gold-sm {
-  box-shadow: 0 0 15px rgba(250, 204, 21, 0.08);
+  position: relative;
+}
+
+.glow-gold-sm::before {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border-radius: inherit;
+  background: radial-gradient(80px circle at 50% 50%, rgba(250, 204, 21, 0.08), transparent 70%);
+  filter: blur(20px);
+  transform: translateZ(0);
+  pointer-events: none;
+  z-index: -1;
 }
 
 .gradient-text {
@@ -109,8 +132,8 @@ body {
 }
 
 @keyframes pulse-glow {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 1; }
+  0%, 100% { opacity: 0.4; transform: translateZ(0); }
+  50% { opacity: 1; transform: translateZ(0); }
 }
 
 @keyframes fade-in {

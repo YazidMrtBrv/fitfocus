@@ -58,8 +58,8 @@ export default function Home() {
 
       <main className="max-w-5xl mx-auto px-6 pt-28 pb-16 text-center flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] relative">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-yellow-500/5 rounded-full blur-[100px] animate-pulse-glow" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-amber-500/5 rounded-full blur-[120px] animate-pulse-glow" style={{ animationDelay: "1s" }} />
+          <div className="absolute -top-1/4 -left-1/4 w-[600px] h-[600px] bg-yellow-500/5 rounded-full blur-[80px] animate-pulse-glow" />
+          <div className="absolute -bottom-1/4 -right-1/4 w-[600px] h-[600px] bg-amber-500/5 rounded-full blur-[80px] animate-pulse-glow" style={{ animationDelay: "1s" }} />
         </div>
 
         <motion.div
@@ -127,13 +127,13 @@ export default function Home() {
                 delay={i * 0.15}
               >
                 <article className="glass-card rounded-2xl p-6 flex flex-col items-start text-left gap-4 group h-full">
-                  <div className="w-14 h-14 rounded-xl overflow-hidden flex-shrink-0 glow-gold-sm">
-                    <img
-                      src={f.img}
-                      alt={f.title}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+              <div className="w-14 h-14 rounded-xl overflow-hidden flex-shrink-0" style={{ filter: "drop-shadow(0 0 12px rgba(250,204,21,0.15))", transform: "translateZ(0)" }}>
+                <img
+                  src={f.img}
+                  alt={f.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
                   <div>
                     <h3 className="text-lg font-bold mb-2 text-white group-hover:text-yellow-400 transition-colors">
                       {f.title}

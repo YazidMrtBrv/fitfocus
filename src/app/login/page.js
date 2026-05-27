@@ -51,8 +51,8 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen bg-black flex flex-col justify-center items-center font-sans px-4 relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/3 left-1/3 w-64 h-64 bg-yellow-500/5 rounded-full blur-[100px] animate-pulse-glow" />
-        <div className="absolute bottom-1/3 right-1/3 w-80 h-80 bg-amber-500/5 rounded-full blur-[120px] animate-pulse-glow" style={{ animationDelay: "1.5s" }} />
+        <div className="absolute -top-1/3 -left-1/3 w-[500px] h-[500px] bg-yellow-500/5 rounded-full blur-[70px] animate-pulse-glow" />
+        <div className="absolute -bottom-1/3 -right-1/3 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[70px] animate-pulse-glow" style={{ animationDelay: "1.5s" }} />
       </div>
 
       <AnimatePresence>
