@@ -2,15 +2,14 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay: i * 0.15, ease: "easeOut" },
-  }),
-};
+import { AnimateOnScroll } from "@/animations/AnimateOnScroll";
+import {
+  heroContainer,
+  heroItem,
+  fadeUp,
+  sectionTitle,
+  sectionLine,
+} from "@/animations/variants";
 
 const features = [
   {
@@ -63,85 +62,89 @@ export default function Home() {
           <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-amber-500/5 rounded-full blur-[120px] animate-pulse-glow" style={{ animationDelay: "1s" }} />
         </div>
 
-        <motion.span
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          className="bg-yellow-400/10 text-yellow-400 border border-yellow-400/20 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6"
-        >
-          Para Entrenadores Independientes
-        </motion.span>
-
-        <motion.h1
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          custom={1}
-          className="text-5xl md:text-7xl font-black tracking-tight max-w-3xl leading-tight mb-6"
-        >
-          Lleva tus entrenamientos al{" "}
-          <span className="gradient-text">siguiente nivel.</span>
-        </motion.h1>
-
-        <motion.p
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          custom={2}
-          className="text-zinc-400 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed"
-        >
-          Deja atrás los Excels y las libretas de papel. Gestiona las rutinas de
-          tus alumnos, controla sus pagos y sigue su progreso en un solo lugar.
-        </motion.p>
-
         <motion.div
-          variants={fadeUp}
+          variants={heroContainer}
           initial="hidden"
           animate="visible"
-          custom={3}
-          className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
         >
-          <Link href="/login" className="btn-gold px-8 py-4 text-base text-center">
-            Comenzar Gratis
-          </Link>
-          <a
-            href="#features"
-            className="btn-outline-gold px-8 py-4 text-base text-center"
+          <motion.span
+            variants={heroItem}
+            className="bg-yellow-400/10 text-yellow-400 border border-yellow-400/20 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6 inline-block"
           >
-            Saber más
-          </a>
+            Para Entrenadores Independientes
+          </motion.span>
+
+          <motion.h1
+            variants={heroItem}
+            className="text-5xl md:text-7xl font-black tracking-tight max-w-3xl leading-tight mb-6"
+          >
+            Lleva tus entrenamientos al{" "}
+            <span className="gradient-text">siguiente nivel.</span>
+          </motion.h1>
+
+          <motion.p
+            variants={heroItem}
+            className="text-zinc-400 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed mx-auto"
+          >
+            Deja atrás los Excels y las libretas de papel. Gestiona las rutinas de
+            tus alumnos, controla sus pagos y sigue su progreso en un solo lugar.
+          </motion.p>
+
+          <motion.div
+            variants={heroItem}
+            className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center"
+          >
+            <Link href="/login" className="btn-gold px-8 py-4 text-base text-center">
+              Comenzar Gratis
+            </Link>
+            <a
+              href="#features"
+              className="btn-outline-gold px-8 py-4 text-base text-center"
+            >
+              Saber más
+            </a>
+          </motion.div>
         </motion.div>
 
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+        <section
           id="features"
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full mt-32 border-t border-zinc-800/50 pt-20"
+          className="w-full mt-32 border-t border-zinc-800/50 pt-20"
         >
-          {features.map((f, i) => (
-            <motion.div
-              key={f.title}
-              variants={fadeUp}
-              custom={i}
-              className="glass-card rounded-2xl p-6 flex flex-col items-start text-left gap-4 group"
-            >
-              <div className="w-14 h-14 rounded-xl overflow-hidden flex-shrink-0 glow-gold-sm">
-                <img
-                  src={f.img}
-                  alt={f.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div>
-                <h3 className="text-lg font-bold mb-2 text-white group-hover:text-yellow-400 transition-colors">
-                  {f.title}
-                </h3>
-                <p className="text-zinc-500 text-sm leading-relaxed">{f.desc}</p>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+          <AnimateOnScroll variants={sectionTitle}>
+            <h2 className="text-3xl md:text-4xl font-black text-center">
+              Todo lo que necesitás
+            </h2>
+          </AnimateOnScroll>
+          <AnimateOnScroll variants={sectionLine}>
+            <div className="h-0.5 w-16 bg-yellow-400/50 mx-auto mt-3 mb-16" />
+          </AnimateOnScroll>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {features.map((f, i) => (
+              <AnimateOnScroll
+                key={f.title}
+                variants={fadeUp}
+                delay={i * 0.15}
+              >
+                <article className="glass-card rounded-2xl p-6 flex flex-col items-start text-left gap-4 group h-full">
+                  <div className="w-14 h-14 rounded-xl overflow-hidden flex-shrink-0 glow-gold-sm">
+                    <img
+                      src={f.img}
+                      alt={f.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold mb-2 text-white group-hover:text-yellow-400 transition-colors">
+                      {f.title}
+                    </h3>
+                    <p className="text-zinc-500 text-sm leading-relaxed">{f.desc}</p>
+                  </div>
+                </article>
+              </AnimateOnScroll>
+            ))}
+          </div>
+        </section>
       </main>
     </div>
   );

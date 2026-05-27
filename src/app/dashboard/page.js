@@ -2,6 +2,14 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { AnimateOnScroll } from "@/animations/AnimateOnScroll";
+import {
+  fadeUp,
+  skillsList,
+  skillItem,
+  sectionTitle,
+  sectionLine,
+} from "@/animations/variants";
 import Link from "next/link";
 
 const diasSemana = [
@@ -12,18 +20,6 @@ const diasSemana = [
   { id: "Viernes", nombre: "VIE" },
   { id: "Sábado", nombre: "SAB" },
 ];
-
-const stagger = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.06 },
-  },
-};
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-};
 
 export default function DashboardPage() {
   const [alumnos, setAlumnos] = useState([]);
@@ -149,33 +145,34 @@ export default function DashboardPage() {
       </nav>
 
       <div className="max-w-5xl mx-auto px-6 py-8">
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={stagger}
-          className="flex items-center justify-between mb-8"
-        >
-          <motion.div variants={fadeUp}>
-            <h1 className="text-2xl font-black tracking-tight text-white">
-              Panel de Control
-            </h1>
-            <p className="text-zinc-500 text-xs mt-0.5">
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <AnimateOnScroll variants={sectionTitle}>
+              <h1 className="text-2xl font-black tracking-tight text-white">
+                Panel de Control
+              </h1>
+            </AnimateOnScroll>
+            <AnimateOnScroll variants={sectionLine}>
+              <div className="h-0.5 w-16 bg-yellow-400/50 mt-1.5" />
+            </AnimateOnScroll>
+            <p className="text-zinc-500 text-xs mt-3">
               Gestión de entrenamientos y membresías.
             </p>
-          </motion.div>
-          <motion.button
-            variants={fadeUp}
-            onClick={() => setModalAbierto(true)}
-            className="btn-gold text-xs px-4 py-2 rounded-lg"
-          >
-            + Añadir Alumno
-          </motion.button>
-        </motion.div>
+          </div>
+          <AnimateOnScroll variants={fadeUp}>
+            <button
+              onClick={() => setModalAbierto(true)}
+              className="btn-gold text-xs px-4 py-2 rounded-lg"
+            >
+              + Añadir Alumno
+            </button>
+          </AnimateOnScroll>
+        </div>
 
         <motion.div
+          variants={skillsList}
           initial="hidden"
           animate="visible"
-          variants={stagger}
           className="grid grid-cols-3 gap-4 mb-8"
         >
           {[
@@ -185,7 +182,7 @@ export default function DashboardPage() {
           ].map((s) => (
             <motion.div
               key={s.label}
-              variants={fadeUp}
+              variants={skillItem}
               className="glass-card rounded-xl p-4"
             >
               <p className="text-zinc-500 text-[10px] font-bold uppercase tracking-wider">
@@ -196,87 +193,84 @@ export default function DashboardPage() {
           ))}
         </motion.div>
 
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={stagger}
-          className="glass-card rounded-xl overflow-hidden glow-gold-sm"
-        >
-          <div className="overflow-x-auto scrollbar-hide">
-            <table className="w-full text-left border-collapse">
-              <thead>
-                <tr className="border-b border-zinc-800 text-zinc-500 text-[10px] font-bold uppercase bg-black/40">
-                  <th className="p-3.5 pl-5">Nombre</th>
-                  <th className="p-3.5">Rutina</th>
-                  <th className="p-3.5">Próximo Pago</th>
-                  <th className="p-3.5 text-center">Estado</th>
-                  <th className="p-3.5 text-right pr-5 w-16">Acción</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-zinc-800/50 text-xs text-zinc-300">
-                <AnimatePresence>
-                  {alumnos.map((alumno) => (
-                    <motion.tr
-                      key={alumno.id}
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="hover:bg-zinc-800/20 transition-colors"
-                    >
-                      <td className="p-3.5 pl-5 font-semibold text-white">
-                        {alumno.nombre}
-                      </td>
-                      <td className="p-3.5">
-                        <button
-                          onClick={() => abrirCalendario(alumno)}
-                          className="text-left text-zinc-400 hover:text-yellow-400 font-medium hover:underline cursor-pointer transition-colors"
-                        >
-                          {alumno.rutina}
-                        </button>
-                      </td>
-                      <td className="p-3.5 text-zinc-500">{alumno.proximoPago}</td>
-                      <td className="p-3.5 text-center">
-                        <button
-                          onClick={() => alternarEstadoPago(alumno.id)}
-                          className={`px-2.5 py-1 rounded-md text-[11px] font-bold border transition-all ${
-                            alumno.estado === "Pagado"
-                              ? "bg-emerald-950/30 text-emerald-400 border-emerald-500/20 hover:bg-emerald-950/50"
-                              : "bg-amber-950/30 text-amber-400 border-amber-500/20 hover:bg-amber-950/50"
-                          }`}
-                        >
-                          {alumno.estado}
-                        </button>
-                      </td>
-                      <td className="p-3.5 text-right pr-5">
-                        <button
-                          onClick={() => eliminarAlumno(alumno.id)}
-                          className="text-zinc-600 hover:text-rose-400 p-1 rounded transition-colors"
-                          title="Eliminar Alumno"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth={1.5}
-                            stroke="currentColor"
-                            className="w-4 h-4 inline"
+        <AnimateOnScroll variants={fadeUp}>
+          <div className="glass-card rounded-xl overflow-hidden glow-gold-sm">
+            <div className="overflow-x-auto scrollbar-hide">
+              <table className="w-full text-left border-collapse">
+                <thead>
+                  <tr className="border-b border-zinc-800 text-zinc-500 text-[10px] font-bold uppercase bg-black/40">
+                    <th className="p-3.5 pl-5">Nombre</th>
+                    <th className="p-3.5">Rutina</th>
+                    <th className="p-3.5">Próximo Pago</th>
+                    <th className="p-3.5 text-center">Estado</th>
+                    <th className="p-3.5 text-right pr-5 w-16">Acción</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-zinc-800/50 text-xs text-zinc-300">
+                  <AnimatePresence>
+                    {alumnos.map((alumno, i) => (
+                      <motion.tr
+                        key={alumno.id}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 20 }}
+                        transition={{ duration: 0.3, delay: i * 0.04 }}
+                        className="hover:bg-zinc-800/20 transition-colors"
+                      >
+                        <td className="p-3.5 pl-5 font-semibold text-white">
+                          {alumno.nombre}
+                        </td>
+                        <td className="p-3.5">
+                          <button
+                            onClick={() => abrirCalendario(alumno)}
+                            className="text-left text-zinc-400 hover:text-yellow-400 font-medium hover:underline cursor-pointer transition-colors"
                           >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
-                            />
-                          </svg>
-                        </button>
-                      </td>
-                    </motion.tr>
-                  ))}
-                </AnimatePresence>
-              </tbody>
-            </table>
+                            {alumno.rutina}
+                          </button>
+                        </td>
+                        <td className="p-3.5 text-zinc-500">{alumno.proximoPago}</td>
+                        <td className="p-3.5 text-center">
+                          <button
+                            onClick={() => alternarEstadoPago(alumno.id)}
+                            className={`px-2.5 py-1 rounded-md text-[11px] font-bold border transition-all ${
+                              alumno.estado === "Pagado"
+                                ? "bg-emerald-950/30 text-emerald-400 border-emerald-500/20 hover:bg-emerald-950/50"
+                                : "bg-amber-950/30 text-amber-400 border-amber-500/20 hover:bg-amber-950/50"
+                            }`}
+                          >
+                            {alumno.estado}
+                          </button>
+                        </td>
+                        <td className="p-3.5 text-right pr-5">
+                          <button
+                            onClick={() => eliminarAlumno(alumno.id)}
+                            className="text-zinc-600 hover:text-rose-400 p-1 rounded transition-colors"
+                            title="Eliminar Alumno"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth={1.5}
+                              stroke="currentColor"
+                              className="w-4 h-4 inline"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                              />
+                            </svg>
+                          </button>
+                        </td>
+                      </motion.tr>
+                    ))}
+                  </AnimatePresence>
+                </tbody>
+              </table>
+            </div>
           </div>
-        </motion.div>
+        </AnimateOnScroll>
       </div>
 
       <AnimatePresence>

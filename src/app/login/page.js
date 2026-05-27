@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import { AnimateOnScroll } from "@/animations/AnimateOnScroll";
+import { fadeUp } from "@/animations/variants";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -78,101 +80,87 @@ export default function LoginPage() {
         )}
       </AnimatePresence>
 
-      <motion.div
-        initial={{ opacity: 0, y: 30, scale: 0.97 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className="glass rounded-2xl p-8 w-full max-w-md glow-gold relative"
-      >
-        <div className="gradient-border rounded-2xl" style={{ padding: "1px" }}>
-          <div className="bg-black/80 backdrop-blur-xl rounded-2xl p-8">
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-center mb-8"
-            >
-              <h2 className="text-2xl font-black text-white tracking-tight flex items-center justify-center gap-2">
-                <span className="text-2xl">💪</span>
-                <span className="gradient-text">FitFocus</span>
-              </h2>
-              <p className="text-zinc-500 mt-1.5 text-xs tracking-wide">
-                Área de acceso para entrenadores
-              </p>
-            </motion.div>
+      <AnimateOnScroll variants={fadeUp}>
+        <div className="glass rounded-2xl p-8 w-full max-w-md glow-gold relative">
+          <div className="gradient-border rounded-2xl" style={{ padding: "1px" }}>
+            <div className="bg-black/80 backdrop-blur-xl rounded-2xl p-8">
+              <AnimateOnScroll variants={fadeUp} delay={0.2}>
+                <div className="text-center mb-8">
+                  <h2 className="text-2xl font-black text-white tracking-tight flex items-center justify-center gap-2">
+                    <span className="text-2xl">💪</span>
+                    <span className="gradient-text">FitFocus</span>
+                  </h2>
+                  <p className="text-zinc-500 mt-1.5 text-xs tracking-wide">
+                    Área de acceso para entrenadores
+                  </p>
+                </div>
+              </AnimateOnScroll>
 
-            <form onSubmit={manejarLogin} className="flex flex-col gap-5">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.3 }}
-              >
-                <label className="block text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-2">
-                  Usuario o Correo
-                </label>
-                <input
-                  type="text"
-                  placeholder="coach"
-                  value={usuario}
-                  onChange={(e) => setUsuario(e.target.value)}
-                  className={`w-full bg-black/60 border rounded-xl p-3 text-white placeholder-zinc-800 text-sm transition-all duration-300 outline-none ${
-                    errorUsuario
-                      ? "border-rose-500/50 shadow-md shadow-rose-500/5 focus:border-rose-500"
-                      : "border-zinc-800 focus:border-yellow-400"
-                  }`}
-                />
-              </motion.div>
+              <form onSubmit={manejarLogin} className="flex flex-col gap-5">
+                <AnimateOnScroll variants={fadeUp} delay={0.3}>
+                  <div>
+                    <label className="block text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-2">
+                      Usuario o Correo
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="coach"
+                      value={usuario}
+                      onChange={(e) => setUsuario(e.target.value)}
+                      className={`w-full bg-black/60 border rounded-xl p-3 text-white placeholder-zinc-800 text-sm transition-all duration-300 outline-none ${
+                        errorUsuario
+                          ? "border-rose-500/50 shadow-md shadow-rose-500/5 focus:border-rose-500"
+                          : "border-zinc-800 focus:border-yellow-400"
+                      }`}
+                    />
+                  </div>
+                </AnimateOnScroll>
 
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.35 }}
-              >
-                <label className="block text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-2">
-                  Contraseña
-                </label>
-                <input
-                  type="password"
-                  placeholder="••••••••"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className={`w-full bg-black/60 border rounded-xl p-3 text-white placeholder-zinc-800 text-sm transition-all duration-300 outline-none ${
-                    errorPassword
-                      ? "border-rose-500/50 shadow-md shadow-rose-500/5 focus:border-rose-500"
-                      : "border-zinc-800 focus:border-yellow-400"
-                  }`}
-                />
-              </motion.div>
+                <AnimateOnScroll variants={fadeUp} delay={0.35}>
+                  <div>
+                    <label className="block text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-2">
+                      Contraseña
+                    </label>
+                    <input
+                      type="password"
+                      placeholder="••••••••"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      className={`w-full bg-black/60 border rounded-xl p-3 text-white placeholder-zinc-800 text-sm transition-all duration-300 outline-none ${
+                        errorPassword
+                          ? "border-rose-500/50 shadow-md shadow-rose-500/5 focus:border-rose-500"
+                          : "border-zinc-800 focus:border-yellow-400"
+                      }`}
+                    />
+                  </div>
+                </AnimateOnScroll>
 
-              <AnimatePresence>
-                {mensajeError && (
-                  <motion.p
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    className="text-rose-400 text-xs font-medium text-center tracking-wide"
+                <AnimatePresence>
+                  {mensajeError && (
+                    <motion.p
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="text-rose-400 text-xs font-medium text-center tracking-wide"
+                    >
+                      {mensajeError}
+                    </motion.p>
+                  )}
+                </AnimatePresence>
+
+                <AnimateOnScroll variants={fadeUp} delay={0.4}>
+                  <button
+                    type="submit"
+                    className="w-full btn-gold rounded-xl p-3 text-sm mt-2"
                   >
-                    {mensajeError}
-                  </motion.p>
-                )}
-              </AnimatePresence>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-              >
-                <button
-                  type="submit"
-                  className="w-full btn-gold rounded-xl p-3 text-sm mt-2"
-                >
-                  Entrar al Panel
-                </button>
-              </motion.div>
-            </form>
+                    Entrar al Panel
+                  </button>
+                </AnimateOnScroll>
+              </form>
+            </div>
           </div>
         </div>
-      </motion.div>
+      </AnimateOnScroll>
     </div>
   );
 }
